@@ -1,0 +1,284 @@
+/* ============================================
+   HOW IT WORKS - SCROLLYTELLING
+   ============================================ */
+
+.how-it-works {
+  position: relative;
+  min-height: auto; /* Remove scrollytelling - use normal flow */
+  background: var(--white-pure);
+  padding: var(--space-16) 0;
+}
+
+/* Water surface background image */
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: url('/assets/water-surface.jpg') center top / cover no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+/* Container - remove sticky behavior */
+.how-it-works-sticky {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Inner Layout */
+.how-it-works-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
+  align-items: center;
+}
+
+/* ─────────────────────────────────────────
+   PRODUCT SHOWCASE (Left Side)
+   ───────────────────────────────────────── */
+
+.product-showcase {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-showcase-image {
+  width: 100%;
+  max-width: 400px;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
+  transition: transform var(--duration-slower) var(--ease-out);
+}
+
+/* Glow ring around product */
+.product-showcase-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--mist-medium);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.product-showcase-ring.is-active {
+  opacity: 1;
+}
+
+/* Water stream effect */
+.water-stream {
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--glow-cyan) 0%,
+    rgba(95, 255, 239, 0.3) 50%,
+    transparent 100%
+  );
+  border-radius: var(--radius-full);
+  transition: height var(--duration-slower) var(--ease-out);
+}
+
+.water-stream.is-active {
+  height: 150px;
+}
+
+/* ─────────────────────────────────────────
+   STEPS (Right Side)
+   ───────────────────────────────────────── */
+
+.how-it-works-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.step {
+  position: relative;
+  padding-left: var(--space-12);
+  opacity: 0.3;
+  transform: translateX(20px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.step.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Step Number */
+.step-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-light);
+  color: var(--mist-deep);
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.step.is-active .step-number {
+  color: var(--glow-cyan);
+}
+
+/* Step Content */
+.step-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-snug);
+}
+
+.step-description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 400px;
+}
+
+/* Progress Line */
+.steps-progress {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--mist-medium);
+}
+
+.steps-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(
+    to bottom,
+    var(--glow-cyan) 0%,
+    var(--glow-cyan-dim) 100%
+  );
+  transition: height var(--duration-slow) var(--ease-out);
+}
+
+/* Step Dots */
+.step::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  background: var(--mist-deep);
+  border-radius: 50%;
+  transition:
+    background var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.step.is-active::before {
+  background: var(--glow-cyan);
+  box-shadow: var(--glow-sm);
+}
+
+/* ─────────────────────────────────────────
+   BACKGROUND EFFECTS
+   ───────────────────────────────────────── */
+
+.how-it-works-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Gradient orbs - foggy effect */
+.how-it-works-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
+}
+
+.how-it-works-orb:nth-child(1) {
+  width: 600px;
+  height: 600px;
+  background: var(--mist-pale);
+  top: 10%;
+  left: -10%;
+}
+
+.how-it-works-orb:nth-child(2) {
+  width: 400px;
+  height: 400px;
+  background: var(--accent-blue);
+  bottom: 20%;
+  right: -5%;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .how-it-works-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .product-showcase {
+    order: -1;
+  }
+
+  .product-showcase-image {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .how-it-works {
+    min-height: auto;
+    padding: var(--space-20) var(--container-padding);
+  }
+
+  .how-it-works-sticky {
+    position: relative;
+    height: auto;
+  }
+
+  .how-it-works-inner {
+    padding: 0;
+  }
+
+  .step {
+    padding-left: var(--space-10);
+    opacity: 1;
+    transform: none;
+  }
+
+  .steps-progress {
+    display: none;
+  }
+}

@@ -1,0 +1,261 @@
+/* ============================================
+   UNDERWATER BUBBLE EFFECTS
+   Rising bubbles with realistic physics
+   ============================================ */
+
+/* Bubble Container - Fixed overlay */
+.bubble-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Individual Bubble */
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.4) 30%,
+    rgba(255, 255, 255, 0.15) 60%,
+    transparent 100%
+  );
+  box-shadow:
+    inset 0 -5px 10px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(255, 255, 255, 0.1);
+  animation: bubble-rise linear infinite;
+}
+
+/* Bubble highlight reflection */
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 30%;
+  height: 30%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+/* Rising Animation with Wobble */
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-25vh) translateX(15px) scale(0.9);
+  }
+  50% {
+    transform: translateY(-50vh) translateX(-10px) scale(1);
+  }
+  75% {
+    transform: translateY(-75vh) translateX(20px) scale(0.95);
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-5px) scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* Individual bubble variations - positioned across screen width */
+.bubble:nth-child(1) {
+  left: 5%;
+  width: 18px;
+  height: 18px;
+  animation-duration: 14s;
+  animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+  left: 12%;
+  width: 28px;
+  height: 28px;
+  animation-duration: 18s;
+  animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+  left: 22%;
+  width: 12px;
+  height: 12px;
+  animation-duration: 12s;
+  animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+  left: 35%;
+  width: 22px;
+  height: 22px;
+  animation-duration: 16s;
+  animation-delay: 1s;
+}
+
+.bubble:nth-child(5) {
+  left: 45%;
+  width: 35px;
+  height: 35px;
+  animation-duration: 20s;
+  animation-delay: 3s;
+}
+
+.bubble:nth-child(6) {
+  left: 55%;
+  width: 15px;
+  height: 15px;
+  animation-duration: 13s;
+  animation-delay: 5s;
+}
+
+.bubble:nth-child(7) {
+  left: 65%;
+  width: 25px;
+  height: 25px;
+  animation-duration: 17s;
+  animation-delay: 0.5s;
+}
+
+.bubble:nth-child(8) {
+  left: 75%;
+  width: 10px;
+  height: 10px;
+  animation-duration: 11s;
+  animation-delay: 6s;
+}
+
+.bubble:nth-child(9) {
+  left: 82%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 19s;
+  animation-delay: 2.5s;
+}
+
+.bubble:nth-child(10) {
+  left: 92%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 15s;
+  animation-delay: 4.5s;
+}
+
+/* Extra bubbles for more density */
+.bubble:nth-child(11) {
+  left: 8%;
+  width: 14px;
+  height: 14px;
+  animation-duration: 13s;
+  animation-delay: 7s;
+}
+
+.bubble:nth-child(12) {
+  left: 28%;
+  width: 32px;
+  height: 32px;
+  animation-duration: 21s;
+  animation-delay: 8s;
+}
+
+.bubble:nth-child(13) {
+  left: 48%;
+  width: 16px;
+  height: 16px;
+  animation-duration: 14s;
+  animation-delay: 9s;
+}
+
+.bubble:nth-child(14) {
+  left: 68%;
+  width: 24px;
+  height: 24px;
+  animation-duration: 16s;
+  animation-delay: 10s;
+}
+
+.bubble:nth-child(15) {
+  left: 88%;
+  width: 13px;
+  height: 13px;
+  animation-duration: 12s;
+  animation-delay: 11s;
+}
+
+/* ─────────────────────────────────────────
+   GLOBAL LIGHT RAYS EFFECT
+   ───────────────────────────────────────── */
+
+.global-light-rays {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60vh;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      rgba(255, 255, 255, 0.12) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 30% 0%,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 40% 40% at 70% 0%,
+      rgba(255, 255, 255, 0.06) 0%,
+      transparent 45%
+    );
+  pointer-events: none;
+  z-index: 99;
+  animation: light-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes light-pulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    animation: none;
+    opacity: 0;
+  }
+
+  .global-light-rays {
+    animation: none;
+    opacity: 0.8;
+  }
+}
+
+/* Hide bubbles on very small screens for performance */
+@media (max-width: 480px) {
+  .bubble:nth-child(n+8) {
+    display: none;
+  }
+}

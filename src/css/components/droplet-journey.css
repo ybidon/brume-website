@@ -1,0 +1,324 @@
+/* ============================================
+   DROPLET JOURNEY - Scroll-Triggered Storytelling
+   ============================================ */
+
+.droplet-journey {
+  position: relative;
+  min-height: auto; /* Remove scrollytelling - use normal flow */
+  padding: var(--space-20) 0;
+  background: linear-gradient(
+    to bottom,
+    var(--white-pure) 0%,
+    var(--mist-pale) 15%,
+    var(--accent-blue) 40%,
+    var(--mist-light) 65%,
+    var(--white-pure) 85%,
+    var(--mist-pale) 100%
+  );
+}
+
+.droplet-sticky {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) 0;
+}
+
+/* ─────────────────────────────────────────
+   THE DROPLET
+   ───────────────────────────────────────── */
+
+.droplet {
+  display: none; /* Hidden - no longer using scroll animation */
+}
+
+.droplet-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Droplet inner glow animation */
+.droplet::after {
+  content: '';
+  position: absolute;
+  inset: 20%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(212, 241, 244, 0.4) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: droplet-glow 2s ease-in-out infinite;
+}
+
+@keyframes droplet-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Ripple effect at droplet position */
+.droplet::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--glow-cyan);
+  border-radius: 50%;
+  opacity: 0;
+  animation: droplet-ripple 3s ease-out infinite;
+}
+
+@keyframes droplet-ripple {
+  0% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
+}
+
+/* ─────────────────────────────────────────
+   JOURNEY STAGES
+   ───────────────────────────────────────── */
+
+.journey-stages {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 var(--container-padding);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-10);
+}
+
+.journey-stage {
+  position: relative;
+  width: 100%;
+  opacity: 1;
+  text-align: center;
+  padding: var(--space-8);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(232, 246, 248, 0.6) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(58, 125, 140, 0.15);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 4px 24px rgba(58, 125, 140, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.journey-stage:hover {
+  transform: translateY(-4px);
+  border-color: rgba(58, 125, 140, 0.3);
+  box-shadow:
+    0 12px 32px rgba(58, 125, 140, 0.15),
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Remove scroll-based visibility */
+.journey-stage.is-active {
+  opacity: 1;
+}
+
+/* Stage Number */
+.stage-number {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: var(--weight-light);
+  color: var(--glow-cyan);
+  opacity: 0.2;
+  display: block;
+  margin-bottom: var(--space-2);
+  line-height: 1;
+  text-shadow: 0 0 60px rgba(91, 191, 208, 0.3);
+}
+
+/* Stage Title */
+.stage-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Stage Description */
+.stage-text {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────
+   DECORATIVE ELEMENTS
+   ───────────────────────────────────────── */
+
+/* Floating particles in the journey */
+.journey-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.journey-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--glow-cyan);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: particle-float 15s linear infinite;
+}
+
+.journey-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.journey-particle:nth-child(2) { left: 25%; animation-delay: 3s; }
+.journey-particle:nth-child(3) { left: 45%; animation-delay: 6s; }
+.journey-particle:nth-child(4) { left: 65%; animation-delay: 9s; }
+.journey-particle:nth-child(5) { left: 85%; animation-delay: 12s; }
+
+@keyframes particle-float {
+  0% {
+    bottom: -20px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+
+/* ─────────────────────────────────────────
+   PROGRESS INDICATOR
+   ───────────────────────────────────────── */
+
+.journey-progress {
+  display: none; /* Hidden - no longer using scroll progress */
+  z-index: 20;
+}
+
+.journey-progress-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--mist-medium);
+  border-radius: 50%;
+  transition: all 0.4s ease-out;
+  position: relative;
+}
+
+.journey-progress-dot.is-active {
+  background: var(--glow-cyan);
+  box-shadow: 0 0 20px rgba(91, 191, 208, 0.5);
+}
+
+.journey-progress-dot.is-active::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--glow-cyan);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+/* Line connecting dots */
+.journey-progress::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--mist-medium);
+  z-index: -1;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .journey-stages {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .journey-stage {
+    padding: var(--space-6);
+  }
+
+  .droplet {
+    width: 40px;
+    height: 55px;
+  }
+
+  .journey-progress {
+    left: var(--space-4);
+  }
+
+  .stage-number {
+    font-size: clamp(3rem, 10vw, 5rem);
+  }
+
+  .stage-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .stage-text {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .journey-progress {
+    display: none;
+  }
+
+  .droplet::before {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .droplet,
+  .journey-stage {
+    transition: none;
+  }
+
+  .droplet::after,
+  .droplet::before,
+  .journey-particle {
+    animation: none;
+  }
+}

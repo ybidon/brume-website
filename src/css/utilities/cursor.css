@@ -1,0 +1,164 @@
+/* ============================================
+   CUSTOM WATER CURSOR
+   ============================================ */
+
+/* Hide default cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a, button, [role="button"], input, textarea, select, label {
+    cursor: none;
+  }
+}
+
+/* Cursor container */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  /* Removed mix-blend-mode for better visibility on light backgrounds */
+}
+
+/* Main cursor dot */
+.cursor-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--glow-cyan-deep);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(91, 191, 208, 0.4);
+  transition:
+    width 0.2s var(--ease-out),
+    height 0.2s var(--ease-out),
+    background 0.2s var(--ease-out);
+}
+
+/* Cursor ring/follower */
+.cursor-ring {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--glow-cyan-deep);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  transition:
+    width 0.3s var(--ease-out),
+    height 0.3s var(--ease-out),
+    opacity 0.3s var(--ease-out),
+    border-width 0.3s var(--ease-out);
+}
+
+/* Hover state - expand */
+.cursor.is-hovering .cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--petal-rose);
+}
+
+.cursor.is-hovering .cursor-ring {
+  width: 60px;
+  height: 60px;
+  opacity: 0.8;
+  border-width: 2px;
+}
+
+/* Click state - pulse */
+.cursor.is-clicking .cursor-ring {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+}
+
+/* Hidden state (for inputs) */
+.cursor.is-hidden {
+  opacity: 0;
+}
+
+/* ─────────────────────────────────────────
+   RIPPLE EFFECTS
+   ───────────────────────────────────────── */
+
+.ripple-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple-expand 0.8s var(--ease-out) forwards;
+}
+
+.ripple-click {
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--glow-cyan-deep);
+  background: transparent;
+}
+
+.ripple-move {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(91, 191, 208, 0.25) 0%,
+    transparent 70%
+  );
+  animation: ripple-small 0.6s var(--ease-out) forwards;
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple-small {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* ─────────────────────────────────────────
+   CURSOR TRAIL (optional, subtle)
+   ───────────────────────────────────────── */
+
+.cursor-trail {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--glow-cyan);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Disable on mobile/touch */
+@media (hover: none) or (pointer: coarse) {
+  .cursor,
+  .ripple-container,
+  .cursor-trail {
+    display: none !important;
+  }
+}

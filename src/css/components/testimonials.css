@@ -1,0 +1,261 @@
+/* ============================================
+   TESTIMONIALS - MARQUEE SECTION
+   Underwater Theme - Dark glassmorphism
+   ============================================ */
+
+.testimonials {
+  position: relative;
+  padding: var(--space-16) 0;
+  background: linear-gradient(
+    to bottom,
+    var(--ocean-mid) 0%,
+    var(--ocean-deep) 100%
+  );
+  overflow: hidden;
+}
+
+/* Subtle light from above */
+.testimonials::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    rgba(74, 139, 168, 0.2) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Section Header */
+.testimonials-header {
+  text-align: center;
+  padding: 0 var(--container-padding);
+  margin-bottom: var(--space-16);
+  position: relative;
+  z-index: 1;
+}
+
+.testimonials-label {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--ocean-light);
+  margin-bottom: var(--space-4);
+}
+
+.testimonials-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-light);
+  color: var(--pearl-white);
+  margin-bottom: var(--space-6);
+  text-shadow: var(--text-glow-sm);
+}
+
+/* Rating Summary */
+.rating-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: rgba(10, 22, 40, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.rating-stars {
+  color: #fbbf24;
+  font-size: var(--text-lg);
+  letter-spacing: 2px;
+}
+
+.rating-text {
+  font-size: var(--text-sm);
+  color: var(--text-light-secondary);
+}
+
+/* ─────────────────────────────────────────
+   MARQUEE
+   ───────────────────────────────────────── */
+
+.testimonials-marquee {
+  position: relative;
+  width: 100%;
+}
+
+/* Fade edges - using ocean colors */
+.testimonials-marquee::before,
+.testimonials-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.testimonials-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--ocean-mid) 0%, transparent 100%);
+}
+
+.testimonials-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--ocean-deep) 0%, transparent 100%);
+}
+
+/* Track */
+.marquee-track {
+  display: flex;
+  gap: var(--space-6);
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─────────────────────────────────────────
+   TESTIMONIAL CARD - Dark Glassmorphism
+   ───────────────────────────────────────── */
+
+.testimonial-card {
+  flex-shrink: 0;
+  width: 380px;
+  padding: var(--space-8);
+  background: rgba(10, 22, 40, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    background var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  background: rgba(10, 22, 40, 0.75);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(74, 139, 168, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Quote */
+.testimonial-quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--pearl-white);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.testimonial-quote::before {
+  content: '"';
+  color: var(--ocean-light);
+  opacity: 0.7;
+  font-size: 1.5em;
+}
+
+.testimonial-quote::after {
+  content: '"';
+  color: var(--ocean-light);
+  opacity: 0.7;
+  font-size: 1.5em;
+}
+
+/* Author */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(74, 139, 168, 0.3);
+  transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.testimonial-card:hover .testimonial-avatar {
+  box-shadow: 0 0 25px rgba(74, 139, 168, 0.5);
+}
+
+.testimonial-name {
+  font-weight: var(--weight-medium);
+  color: var(--pearl-white);
+  margin-bottom: var(--space-1);
+}
+
+.testimonial-role {
+  font-size: var(--text-sm);
+  color: var(--text-light-muted);
+}
+
+/* Verified Badge */
+.testimonial-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--ocean-light);
+}
+
+.testimonial-verified svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: var(--space-20) 0;
+  }
+
+  .testimonial-card {
+    width: 300px;
+    padding: var(--space-6);
+  }
+
+  .testimonials-marquee::before,
+  .testimonials-marquee::after {
+    width: 50px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  .testimonial-card {
+    transition: none;
+  }
+}

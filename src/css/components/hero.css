@@ -1,0 +1,444 @@
+/* ============================================
+   HERO SECTION
+   Underwater Ethereal Theme
+   ============================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--ocean-deep);
+}
+
+/* Fullscreen hero variant */
+.hero-fullscreen {
+  min-height: 100vh;
+  min-height: 100svh; /* Mobile-friendly */
+}
+
+/* ─────────────────────────────────────────
+   BACKGROUND - Underwater Image
+   ───────────────────────────────────────── */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Fullscreen background image */
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Gradient overlay for depth effect - darker at bottom */
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(74, 139, 168, 0.1) 0%,
+    rgba(26, 74, 110, 0.3) 40%,
+    rgba(13, 40, 71, 0.5) 70%,
+    rgba(10, 22, 40, 0.7) 100%
+  );
+  pointer-events: none;
+}
+
+/* Light Rays Effect - Sunlight filtering through water */
+.light-rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background:
+    radial-gradient(
+      ellipse 60% 100% at 50% 0%,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.1) 30%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 80% at 30% 0%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 35% 70% at 70% 0%,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 1;
+  animation: light-shimmer 8s ease-in-out infinite alternate;
+}
+
+@keyframes light-shimmer {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Caustics light pattern animation */
+.hero-caustics {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  right: -10%;
+  height: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  animation: caustics-move 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes caustics-move {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(-5%) scale(1.1);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* ─────────────────────────────────────────
+   FOG OVERLAYS (disabled for fullscreen hero)
+   ───────────────────────────────────────── */
+
+.hero::before,
+.hero::after {
+  display: none;
+}
+
+/* ─────────────────────────────────────────
+   CONTENT
+   ───────────────────────────────────────── */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--container-padding);
+  max-width: 1200px;
+}
+
+/* Main headline */
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: var(--weight-light);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--pearl-white);
+  margin-bottom: var(--space-6);
+  max-width: 800px;
+  white-space: nowrap;
+  text-shadow: var(--text-glow-md);
+}
+
+/* Large centered headline for fullscreen hero */
+.hero-headline-large {
+  font-size: clamp(4rem, 12vw, 10rem);
+  margin-bottom: 0;
+  color: var(--pearl-white);
+  text-shadow:
+    0 0 30px rgba(255, 255, 255, 0.5),
+    0 0 60px rgba(255, 255, 255, 0.3),
+    0 0 90px rgba(255, 255, 255, 0.2);
+  animation: title-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+  0% {
+    text-shadow:
+      0 0 30px rgba(255, 255, 255, 0.5),
+      0 0 60px rgba(255, 255, 255, 0.3),
+      0 0 90px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    text-shadow:
+      0 0 40px rgba(255, 255, 255, 0.6),
+      0 0 80px rgba(255, 255, 255, 0.4),
+      0 0 120px rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* Centered content variant */
+.hero-content-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+}
+
+/* Tagline */
+.hero-tagline {
+  display: inline-block;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--text-light-secondary);
+  margin-bottom: var(--space-4);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-in-blur 1s var(--ease-out) 0.3s forwards;
+}
+
+/* Letter-by-letter animation */
+.hero-headline.text-reveal {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.hero-headline .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%) rotateX(-90deg);
+  animation: letter-reveal 0.8s var(--ease-out) forwards;
+  transform-origin: center bottom;
+}
+
+@keyframes letter-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) rotateX(-90deg);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+    filter: blur(0);
+  }
+}
+
+/* Subheadline */
+.hero-subheadline {
+  font-size: var(--text-xl);
+  color: var(--text-light-secondary);
+  max-width: 500px;
+  margin-bottom: var(--space-10);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-in-blur 1s var(--ease-out) 0.8s forwards;
+}
+
+/* CTA Button */
+.hero-cta {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-in-blur 1s var(--ease-out) 1s forwards;
+}
+
+/* Glassmorphism CTA Button - Underwater theme */
+.btn-hero {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--pearl-white);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition:
+    all 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius var(--duration-slow) var(--ease-spring);
+}
+
+.btn-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.btn-hero:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-radius: 60px 40px 55px 45px;
+  animation: liquid-morph 2s ease-in-out infinite;
+}
+
+@keyframes liquid-morph {
+  0%, 100% { border-radius: 60px 40px 55px 45px; }
+  25% { border-radius: 45px 55px 40px 60px; }
+  50% { border-radius: 55px 45px 60px 40px; }
+  75% { border-radius: 40px 60px 45px 55px; }
+}
+
+.btn-hero:hover::before {
+  opacity: 1;
+}
+
+.btn-hero svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.btn-hero:hover svg {
+  transform: translateX(4px);
+}
+
+/* ─────────────────────────────────────────
+   SCROLL INDICATOR
+   ───────────────────────────────────────── */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  opacity: 0;
+  animation: fade-in-blur 1s var(--ease-out) 1.5s forwards;
+  z-index: 3;
+}
+
+.scroll-indicator span {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-light-secondary);
+}
+
+/* Fullscreen hero scroll indicator */
+.hero-fullscreen .scroll-indicator span {
+  color: var(--pearl-white);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-fullscreen .scroll-indicator-arrow {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.scroll-indicator-arrow {
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-full);
+  position: relative;
+}
+
+.scroll-indicator-arrow::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  background: var(--pearl-white);
+  border-radius: var(--radius-full);
+  transform: translateX(-50%);
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 0.5; }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .hero-product {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: var(--space-12);
+    width: clamp(180px, 50vw, 300px);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-content {
+    padding-top: calc(var(--space-20) + 60px);
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-headline-large {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .light-rays {
+    height: 50%;
+  }
+}
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────── */
+
+@keyframes fade-in-blur {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}

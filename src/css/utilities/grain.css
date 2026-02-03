@@ -1,0 +1,113 @@
+/* ============================================
+   ANIMATED FILM GRAIN + FOG OVERLAY
+   Adds cinematic texture and misty atmosphere
+   ============================================ */
+
+/* ─────────────────────────────────────────
+   GRAIN OVERLAY
+   ───────────────────────────────────────── */
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: -200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grain-shift 0.5s steps(10) infinite;
+}
+
+@keyframes grain-shift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+/* ─────────────────────────────────────────
+   FOG EFFECT - Animated Mist Layers
+   ───────────────────────────────────────── */
+
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 150% 100% at 0% 50%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 100% 150% at 100% 80%,
+      rgba(240, 244, 248, 0.3) 0%,
+      transparent 50%
+    );
+  animation: fog-movement 30s ease-in-out infinite alternate;
+  opacity: 0.6;
+}
+
+@keyframes fog-movement {
+  0% {
+    transform: translateX(-5%) translateY(-2%);
+  }
+  50% {
+    transform: translateX(3%) translateY(2%);
+  }
+  100% {
+    transform: translateX(-3%) translateY(-1%);
+  }
+}
+
+/* Disable for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay::before,
+  .grain-overlay::after {
+    animation: none;
+  }
+}
+
+/* Reduce effects on mobile for performance */
+@media (max-width: 640px) {
+  .grain-overlay {
+    opacity: 0.015;
+  }
+
+  .grain-overlay::after {
+    opacity: 0.3;
+  }
+}

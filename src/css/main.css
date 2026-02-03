@@ -1,0 +1,70 @@
+/* ============================================
+   BRUME - Main Stylesheet
+   ============================================ */
+
+/* Base */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+
+/* Utilities */
+@import './utilities/animations.css';
+@import './utilities/cursor.css';
+@import './utilities/grain.css';
+
+/* Effects */
+@import './effects/bubbles.css';
+
+/* Components */
+@import './components/header.css';
+@import './components/hero.css';
+@import './components/features.css';
+@import './components/features-horizontal.css';
+@import './components/droplet-journey.css';
+@import './components/how-it-works.css';
+@import './components/interlude.css';
+@import './components/testimonials.css';
+@import './components/purchase.css';
+@import './components/footer.css';
+
+/* ============================================
+   GLOBAL UTILITIES
+   ============================================ */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Hide visually but maintain layout */
+.invisible {
+  visibility: hidden;
+}
+
+/* Smooth scroll for entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Disable smooth scroll for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

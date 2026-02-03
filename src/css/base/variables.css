@@ -1,0 +1,213 @@
+/* ============================================
+   BRUME - Design System Variables
+   "Underwater Ethereal" Theme - Deep Ocean Blues
+   ============================================ */
+
+:root {
+  /* ─────────────────────────────────────────
+     COLOR PALETTE - Underwater Ethereal
+     ───────────────────────────────────────── */
+
+  /* Deep Ocean Blues - Primary Background */
+  --ocean-abyss: #0A1628;
+  --ocean-deep: #0D2847;
+  --ocean-mid: #1A4A6E;
+  --ocean-surface: #2E6B8A;
+  --ocean-light: #4A8BA8;
+
+  /* Ethereal Whites - Accent/Content */
+  --pearl-white: #FFFFFF;
+  --pearl-cream: #F8F5F0;
+  --pearl-soft: #E8E4DF;
+  --bubble-white: rgba(255, 255, 255, 0.85);
+
+  /* Light Rays & Glow */
+  --light-ray: rgba(255, 255, 255, 0.15);
+  --light-glow: rgba(74, 139, 168, 0.4);
+  --surface-glow: rgba(255, 255, 255, 0.08);
+
+  /* Gradients */
+  --gradient-depth: linear-gradient(180deg,
+    #4A8BA8 0%,
+    #2E6B8A 15%,
+    #1A4A6E 40%,
+    #0D2847 70%,
+    #0A1628 100%
+  );
+
+  /* Legacy mapping for compatibility */
+  --white-pure: #FFFFFF;
+  --mist-pale: #1A4A6E;
+  --mist-light: #2E6B8A;
+  --mist-medium: #0D2847;
+  --mist-deep: #0A1628;
+
+  /* Accent - Ocean Cyan */
+  --glow-cyan: #4A8BA8;
+  --glow-cyan-dim: #6BA3BC;
+  --glow-cyan-deep: #2E6B8A;
+  --glow-soft: rgba(74, 139, 168, 0.25);
+  --glow-hover: rgba(74, 139, 168, 0.4);
+  --accent-blue: #1A4A6E;
+
+  /* Water tones */
+  --water-crystal: rgba(74, 139, 168, 0.3);
+  --water-clear: rgba(46, 107, 138, 0.5);
+  --water-deep-teal: #2E6B8A;
+  --water-bubble: rgba(255, 255, 255, 0.8);
+
+  /* Organic - Soft Petal (for testimonials/accents) */
+  --petal-blush: rgba(255, 255, 255, 0.15);
+  --petal-rose: rgba(255, 255, 255, 0.2);
+  --petal-soft: rgba(255, 255, 255, 0.1);
+  --petal-cream: rgba(255, 255, 255, 0.95);
+  --petal-warm: rgba(255, 255, 255, 0.98);
+
+  /* Text Colors - Light on Dark */
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-dark: #0A1628;
+  --text-light: #FFFFFF;
+
+  /* Utility - Underwater Effects */
+  --mist: rgba(10, 22, 40, 0.5);
+  --mist-overlay: rgba(10, 22, 40, 0.85);
+  --fog-light: rgba(74, 139, 168, 0.2);
+  --fog-medium: rgba(26, 74, 110, 0.4);
+  --overlay-light: rgba(255, 255, 255, 0.1);
+  --overlay-dark: rgba(10, 22, 40, 0.6);
+
+  /* Card Backgrounds */
+  --card-dark: rgba(10, 22, 40, 0.6);
+  --card-light: rgba(255, 255, 255, 0.95);
+  --card-glass: rgba(255, 255, 255, 0.1);
+
+  /* ─────────────────────────────────────────
+     TYPOGRAPHY
+     ───────────────────────────────────────── */
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Instrument Serif', Georgia, serif;
+
+  /* Font Sizes - Fluid */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.925rem + 0.375vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.75rem + 3.75vw, 4.5rem);
+  --text-5xl: clamp(3rem, 2rem + 5vw, 6rem);
+  --text-hero: clamp(4rem, 3rem + 8vw, 12rem);
+
+  /* Font Weights */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+  --tracking-widest: 0.2em;
+
+  /* ─────────────────────────────────────────
+     SPACING
+     ───────────────────────────────────────── */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
+
+  /* Container */
+  --container-max: 1400px;
+  --container-padding: clamp(1.5rem, 5vw, 4rem);
+
+  /* ─────────────────────────────────────────
+     EFFECTS
+     ───────────────────────────────────────── */
+
+  /* Glow Effects - Underwater theme */
+  --glow-sm: 0 0 10px var(--glow-soft), 0 0 20px var(--glow-soft);
+  --glow-md: 0 0 15px var(--glow-soft), 0 0 30px var(--glow-soft);
+  --glow-lg: 0 0 20px var(--glow-soft), 0 0 40px var(--glow-soft), 0 0 60px rgba(74, 139, 168, 0.2);
+
+  /* Text Glow */
+  --text-glow-sm: 0 0 10px rgba(255, 255, 255, 0.3);
+  --text-glow-md: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
+  --text-glow-lg: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.3);
+
+  /* Shadows - For light elements on dark */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.35), 0 10px 25px rgba(0, 0, 0, 0.25);
+
+  /* Light Shadow - For dark elements */
+  --shadow-light: 0 0 30px rgba(255, 255, 255, 0.1);
+  --shadow-glow: 0 0 40px rgba(74, 139, 168, 0.3);
+
+  /* Blur */
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 16px;
+  --blur-xl: 24px;
+  --blur-fog: 60px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* ─────────────────────────────────────────
+     TRANSITIONS
+     ───────────────────────────────────────── */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+
+  /* ─────────────────────────────────────────
+     Z-INDEX SCALE
+     ───────────────────────────────────────── */
+
+  --z-base: 0;
+  --z-above: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}

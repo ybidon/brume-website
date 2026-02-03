@@ -1,0 +1,130 @@
+/* ============================================
+   TYPOGRAPHY SYSTEM
+   ============================================ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap');
+
+/* Base Typography */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+  background-color: var(--white-pure);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h1 {
+  font-size: var(--text-hero);
+  letter-spacing: var(--tracking-tighter);
+}
+
+h2 {
+  font-size: var(--text-4xl);
+}
+
+h3 {
+  font-size: var(--text-3xl);
+}
+
+h4 {
+  font-size: var(--text-2xl);
+}
+
+h5 {
+  font-size: var(--text-xl);
+}
+
+h6 {
+  font-size: var(--text-lg);
+}
+
+/* Paragraph */
+p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+p + p {
+  margin-top: var(--space-4);
+}
+
+/* Links */
+a {
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--glow-cyan);
+}
+
+/* Accent Text - Instrument Serif */
+.text-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+}
+
+/* Display Text */
+.text-display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tighter);
+}
+
+/* Label / Overline */
+.text-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--glow-cyan);
+}
+
+/* Large body text */
+.text-lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+/* Small text */
+.text-small {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Number styling for features */
+.text-number {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-light);
+  color: var(--water-surface);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+/* Gradient text effect */
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--glow-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow text effect - subtle for light theme */
+.text-glow {
+  text-shadow:
+    0 0 20px rgba(91, 191, 208, 0.15),
+    0 0 40px rgba(91, 191, 208, 0.08);
+}

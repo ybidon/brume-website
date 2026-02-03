@@ -1,0 +1,152 @@
+/* ============================================
+   VISUAL INTERLUDE - "The Garden Below"
+   ============================================ */
+
+.interlude {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Image */
+.interlude-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.interlude-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: ken-burns 30s ease-out forwards;
+}
+
+/* Foggy overlay for ethereal effect */
+.interlude-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.3) 30%,
+      rgba(255, 255, 255, 0.3) 70%,
+      rgba(240, 244, 248, 0.95) 100%
+    );
+}
+
+/* Subtle vignette effect */
+.interlude::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+/* Content */
+.interlude-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: var(--container-padding);
+}
+
+.interlude-text {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-light);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tighter);
+  text-shadow:
+    0 2px 40px rgba(255, 255, 255, 0.8),
+    0 0 80px rgba(255, 255, 255, 0.5);
+  opacity: 0.9;
+}
+
+/* Rising Mist Effect */
+.interlude-mist {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.interlude-mist .mist-layer {
+  position: absolute;
+  bottom: -50px;
+  width: 150%;
+  height: 280px;
+  filter: blur(15px);
+  opacity: 0;
+  animation: ease-in-out infinite;
+}
+
+/* Each layer has unique cloud-like shape */
+.interlude-mist .mist-layer:nth-child(1) {
+  left: -25%;
+  height: 300px;
+  background:
+    radial-gradient(ellipse 85% 55% at 20% 80%, rgba(175, 180, 190, 1) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 40% at 65% 75%, rgba(155, 170, 185, 0.95) 0%, transparent 45%);
+  animation-name: fog-rise-2;
+  animation-duration: 13s;
+  animation-delay: 0s;
+}
+
+.interlude-mist .mist-layer:nth-child(2) {
+  left: -5%;
+  height: 260px;
+  background:
+    radial-gradient(ellipse 70% 50% at 35% 85%, rgba(180, 185, 195, 1) 0%, transparent 48%),
+    radial-gradient(ellipse 60% 45% at 75% 70%, rgba(160, 175, 190, 0.9) 0%, transparent 45%);
+  animation-name: fog-rise-1;
+  animation-duration: 11s;
+  animation-delay: 2s;
+}
+
+.interlude-mist .mist-layer:nth-child(3) {
+  left: 5%;
+  height: 320px;
+  background:
+    radial-gradient(ellipse 75% 50% at 25% 75%, rgba(155, 170, 185, 1) 0%, transparent 50%),
+    radial-gradient(ellipse 65% 45% at 70% 80%, rgba(175, 180, 190, 1) 0%, transparent 48%);
+  animation-name: fog-rise-3;
+  animation-duration: 14s;
+  animation-delay: 4s;
+}
+
+.interlude-mist .mist-layer:nth-child(4) {
+  left: -15%;
+  height: 280px;
+  background:
+    radial-gradient(ellipse 80% 55% at 45% 80%, rgba(170, 175, 185, 1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 85% 75%, rgba(150, 165, 180, 0.9) 0%, transparent 42%);
+  animation-name: fog-rise-2;
+  animation-duration: 12s;
+  animation-delay: 1s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .interlude {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .interlude-text {
+    font-size: clamp(3rem, 15vw, 6rem);
+  }
+}
