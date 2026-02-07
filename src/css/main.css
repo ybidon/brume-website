@@ -16,6 +16,7 @@
 @import './effects/bubbles.css';
 
 /* Components */
+@import './components/announcement-bar.css';
 @import './components/header.css';
 @import './components/hero.css';
 @import './components/features.css';
@@ -25,6 +26,7 @@
 @import './components/interlude.css';
 @import './components/testimonials.css';
 @import './components/purchase.css';
+@import './components/buy-page.css';
 @import './components/footer.css';
 
 /* ============================================

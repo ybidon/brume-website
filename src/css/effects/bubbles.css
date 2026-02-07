@@ -3,13 +3,13 @@
    Rising bubbles with realistic physics
    ============================================ */
 
-/* Bubble Container - Fixed overlay */
+/* Bubble Container - Inside hero section */
 .bubble-container {
-  position: fixed;
+  position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: 100;
+  z-index: 2;
 }
 
 /* Individual Bubble */
@@ -19,14 +19,14 @@
   border-radius: 50%;
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.4) 30%,
-    rgba(255, 255, 255, 0.15) 60%,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.08) 60%,
     transparent 100%
   );
   box-shadow:
-    inset 0 -5px 10px rgba(255, 255, 255, 0.2),
-    0 0 15px rgba(255, 255, 255, 0.1);
+    inset 0 -5px 10px rgba(255, 255, 255, 0.1),
+    0 0 15px rgba(255, 255, 255, 0.05);
   animation: bubble-rise linear infinite;
 }
 
@@ -40,7 +40,7 @@
   height: 30%;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 0%,
     transparent 70%
   );
   border-radius: 50%;
@@ -53,7 +53,7 @@
     opacity: 0;
   }
   10% {
-    opacity: 0.7;
+    opacity: 0.5;
   }
   25% {
     transform: translateY(-25vh) translateX(15px) scale(0.9);
@@ -65,7 +65,7 @@
     transform: translateY(-75vh) translateX(20px) scale(0.95);
   }
   90% {
-    opacity: 0.5;
+    opacity: 0.3;
   }
   100% {
     transform: translateY(-110vh) translateX(-5px) scale(0.85);
@@ -196,48 +196,6 @@
 }
 
 /* ─────────────────────────────────────────
-   GLOBAL LIGHT RAYS EFFECT
-   ───────────────────────────────────────── */
-
-.global-light-rays {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60vh;
-  background:
-    radial-gradient(
-      ellipse 80% 60% at 50% 0%,
-      rgba(255, 255, 255, 0.12) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 50% 50% at 30% 0%,
-      rgba(255, 255, 255, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse 40% 40% at 70% 0%,
-      rgba(255, 255, 255, 0.06) 0%,
-      transparent 45%
-    );
-  pointer-events: none;
-  z-index: 99;
-  animation: light-pulse 6s ease-in-out infinite alternate;
-}
-
-@keyframes light-pulse {
-  0% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-/* ─────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────── */
 
@@ -245,11 +203,6 @@
   .bubble {
     animation: none;
     opacity: 0;
-  }
-
-  .global-light-rays {
-    animation: none;
-    opacity: 0.8;
   }
 }
 

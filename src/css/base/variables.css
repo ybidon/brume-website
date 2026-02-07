@@ -84,12 +84,34 @@
   --card-glass: rgba(255, 255, 255, 0.1);
 
   /* ─────────────────────────────────────────
+     RHODE-INSPIRED PALETTE
+     Warm, minimal, luxe aesthetic
+     ───────────────────────────────────────── */
+
+  --rhode-cream: #f5f3ef;
+  --rhode-beige: #e8e4dc;
+  --rhode-beige-dark: #d4cfc5;
+  --rhode-olive: #000000;
+  --rhode-olive-light: #8a8a7a;
+  --rhode-olive-dark: #222222;
+  --rhode-mint: #c5e0d8;
+  --rhode-mint-light: #e0f0eb;
+  --rhode-white: #ffffff;
+  --rhode-warm-white: #faf9f7;
+
+  /* Rhode text colors */
+  --rhode-text: #3d3d33;
+  --rhode-text-light: #6b6b5f;
+  --rhode-text-muted: #9a9a8a;
+
+  /* ─────────────────────────────────────────
      TYPOGRAPHY
      ───────────────────────────────────────── */
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-accent: 'Instrument Serif', Georgia, serif;
+  --font-brume: 'Days One', 'DM Sans', sans-serif;
 
   /* Font Sizes - Fluid */
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);

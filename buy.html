@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="brume - Shop the premium water faucet filter. Pure, mineral-rich water for healthier skin and hair.">
+
+  <title>brume | Shop</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/src/css/main.css">
+</head>
+<body>
+  <!-- Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════
+       HEADER / NAVIGATION
+       ═══════════════════════════════════════ -->
+  <header class="header is-scrolled" id="header">
+    <nav class="nav" id="nav">
+      <a href="/#features">How it Works</a>
+    </nav>
+
+    <a href="/" class="logo">brume</a>
+
+    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════
+         BUY PAGE: Product Detail
+         ═══════════════════════════════════════ -->
+    <section class="buy-page" id="product">
+      <div class="buy-page-row">
+
+        <!-- Left: Product Image Slideshow -->
+        <div class="buy-page-gallery">
+          <div class="product-slideshow">
+            <div class="slideshow-images">
+              <!-- Silver variant (default) -->
+              <img src="/assets/product1.jpeg" alt="brume Filter - Silver view 1" class="slideshow-image active" data-index="0" data-color="silver">
+              <img src="/assets/product2.jpeg" alt="brume Filter - Silver view 2" class="slideshow-image" data-index="1" data-color="silver">
+              <img src="/assets/product3.jpeg" alt="brume Filter - Silver view 3" class="slideshow-image" data-index="2" data-color="silver">
+              <img src="/assets/product4.jpeg" alt="brume Filter - Silver view 4" class="slideshow-image" data-index="3" data-color="silver">
+              <img src="/assets/product5.jpeg" alt="brume Filter - Silver view 5" class="slideshow-image" data-index="4" data-color="silver">
+
+              <!-- White variant (placeholder - same images for now) -->
+              <img src="/assets/product1.jpeg" alt="brume Filter - White view 1" class="slideshow-image" data-index="0" data-color="white">
+              <img src="/assets/product2.jpeg" alt="brume Filter - White view 2" class="slideshow-image" data-index="1" data-color="white">
+              <img src="/assets/product3.jpeg" alt="brume Filter - White view 3" class="slideshow-image" data-index="2" data-color="white">
+              <img src="/assets/product4.jpeg" alt="brume Filter - White view 4" class="slideshow-image" data-index="3" data-color="white">
+              <img src="/assets/product5.jpeg" alt="brume Filter - White view 5" class="slideshow-image" data-index="4" data-color="white">
+            </div>
+
+            <!-- Arrow Navigation -->
+            <button class="slideshow-arrow slideshow-prev" aria-label="Previous image">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="slideshow-arrow slideshow-next" aria-label="Next image">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Product Info -->
+        <div class="buy-page-content">
+          <div class="buy-page-info">
+            <h1 class="purchase-name"><span class="purchase-name-brume">brume</span> filter</h1>
+            <p class="purchase-desc">Removes chlorine, heavy metals, and impurities that dry out your skin and strip away your natural glow. Advanced 5-stage filtration transforms your tap into a source of pure, mineral-rich water.</p>
+            <div class="purchase-price">
+              <span class="purchase-currency">$</span>89
+            </div>
+
+            <!-- Color Selector -->
+            <div class="color-selector">
+              <span class="color-selector-label">Silver</span>
+              <div class="color-selector-options">
+                <button class="color-swatch color-swatch--silver active" data-color="silver" aria-label="Select Silver color" title="Silver">
+                  <span class="color-swatch-check" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                </button>
+                <button class="color-swatch color-swatch--white" data-color="white" aria-label="Select White color" title="White">
+                  <span class="color-swatch-check" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Buy Button -->
+            <div class="purchase-buttons">
+              <button class="btn-purchase btn-add-cart">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <!-- Large Logo Watermark -->
+    <div class="footer-watermark" aria-hidden="true">BEAUTY BEGINS WITH WATER</div>
+
+    <!-- Footer Links -->
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>Social</h4>
+        <div class="footer-social-links">
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/src/js/buy.js"></script>
+</body>
+</html>

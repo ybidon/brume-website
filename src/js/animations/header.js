@@ -1,6 +1,7 @@
 /**
  * Header Navigation Behavior
- * - Scroll-triggered background change
+ * - Show/hide on scroll (Rhode-style)
+ * - Only show sticky header when scrolling up AFTER passing hero
  * - Mobile menu toggle
  */
 
@@ -8,20 +9,60 @@ export function initHeader() {
   const header = document.getElementById('header');
   const nav = document.getElementById('nav');
   const menuToggle = document.getElementById('menuToggle');
+  const hero = document.querySelector('.hero');
 
   if (!header) return;
 
-  // Scroll behavior - add/remove class based on scroll position
+  // Get hero height to know when we've passed it
+  const getHeroBottom = () => {
+    if (hero) {
+      return hero.offsetTop + hero.offsetHeight;
+    }
+    return window.innerHeight; // Fallback to viewport height
+  };
+
+  // Scroll behavior - hide on scroll down, show on scroll up (only after hero)
   let lastScroll = 0;
-  const scrollThreshold = 50;
+  let heroBottom = getHeroBottom();
+
+  // Update hero bottom on resize
+  window.addEventListener('resize', () => {
+    heroBottom = getHeroBottom();
+  });
 
   function handleScroll() {
     const currentScroll = window.scrollY;
 
-    if (currentScroll > scrollThreshold) {
+    // If no hero exists, always stay in scrolled state
+    if (!hero) {
       header.classList.add('is-scrolled');
-    } else {
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.classList.add('is-hidden');
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastScroll = currentScroll;
+      return;
+    }
+
+    // While in hero section - keep header visible, no sticky behavior
+    if (currentScroll < heroBottom - 100) {
+      header.classList.remove('is-hidden');
       header.classList.remove('is-scrolled');
+      lastScroll = currentScroll;
+      return;
+    }
+
+    // Past hero section - enable sticky behavior
+    header.classList.add('is-scrolled');
+
+    // Scrolling down - hide header
+    if (currentScroll > lastScroll) {
+      header.classList.add('is-hidden');
+    }
+    // Scrolling up - show header (sticky)
+    else if (currentScroll < lastScroll) {
+      header.classList.remove('is-hidden');
     }
 
     lastScroll = currentScroll;

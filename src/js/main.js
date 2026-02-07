@@ -12,6 +12,7 @@ import { initTextReveal } from './animations/textReveal.js';
 import { initWebGLFog } from './effects/webglFog.js';
 import { initDropletJourney } from './animations/dropletJourney.js';
 import { initHorizontalScroll } from './effects/horizontalScroll.js';
+import { initSlideshow } from './effects/slideshow.js';
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize custom water cursor
   initWaterCursor();
 
-  // Initialize hero text reveal animation
-  initTextReveal();
+  // Text reveal disabled — hero logo visibility controlled by video cycle
+  // initTextReveal();
 
   // Initialize interactive fog effect
   initWebGLFog();
@@ -44,6 +45,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize horizontal scroll for feature cards
   initHorizontalScroll();
+
+  // Initialize product slideshow
+  initSlideshow();
+
+  // Hero video cycle: plays → ends → show brume logo → pause 20s → fade logo out → replay
+  const heroVideo = document.querySelector('.hero-bg-video');
+  const heroHeadline = document.querySelector('.hero-headline-large');
+  if (heroVideo && heroHeadline) {
+    // Hide logo initially
+    heroHeadline.classList.add('hero-logo-hidden');
+
+    heroVideo.addEventListener('ended', () => {
+      // Video ended: fade in the brume logo
+      heroHeadline.classList.remove('hero-logo-hidden');
+      heroHeadline.classList.add('hero-logo-visible');
+
+      // After 20s, fade logo out and restart video
+      setTimeout(() => {
+        heroHeadline.classList.remove('hero-logo-visible');
+        heroHeadline.classList.add('hero-logo-hidden');
+
+        // Wait for fade-out to finish, then replay
+        setTimeout(() => {
+          heroVideo.currentTime = 0;
+          heroVideo.play();
+        }, 1000);
+      }, 20000);
+    });
+  }
+
+  // Initialize features values (hover to switch images + content)
+  const featureItems = document.querySelectorAll('.features-val-item');
+  const featureImages = document.querySelectorAll('.features-val-img');
+  const featureContents = document.querySelectorAll('.features-val-content');
+
+  if (featureItems.length > 0 && featureImages.length > 0) {
+    featureItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        const feature = item.dataset.feature;
+
+        // Update active nav item
+        featureItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        // Update active image
+        featureImages.forEach(img => img.classList.remove('active'));
+        const targetImg = document.querySelector(`.features-val-img[data-feature="${feature}"]`);
+        if (targetImg) targetImg.classList.add('active');
+
+        // Update active content (heading + description)
+        featureContents.forEach(c => c.classList.remove('active'));
+        const targetContent = document.querySelector(`.features-val-content[data-feature="${feature}"]`);
+        if (targetContent) targetContent.classList.add('active');
+      });
+    });
+  }
 
   // Log for debugging
   console.log('🌊 Brume initialized with advanced features');
