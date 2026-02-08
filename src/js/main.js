@@ -59,6 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroVideo = document.querySelector('.hero-bg-video');
   const heroHeadline = document.querySelector('.hero-headline-large');
   if (heroVideo && heroHeadline) {
+    // Swap to compressed mobile video on small screens
+    if (window.innerWidth <= 768) {
+      const source = heroVideo.querySelector('source');
+      if (source) {
+        source.src = '/assets/video1-mobile.mp4';
+        heroVideo.load();
+      }
+    }
+
     // Hide logo initially
     heroHeadline.classList.add('hero-logo-hidden');
 
@@ -75,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Wait for fade-out to finish, then replay
         setTimeout(() => {
           heroVideo.currentTime = 0;
-          heroVideo.play();
+          heroVideo.play().catch(() => {});
         }, 1000);
       }, 20000);
     });
