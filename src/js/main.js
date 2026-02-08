@@ -13,11 +13,17 @@ import { initWebGLFog } from './effects/webglFog.js';
 import { initDropletJourney } from './animations/dropletJourney.js';
 import { initHorizontalScroll } from './effects/horizontalScroll.js';
 import { initSlideshow } from './effects/slideshow.js';
+import { initCartDrawer } from './cartDrawer.js';
+import { initCartIcon } from './cartIcon.js';
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize header behavior
   initHeader();
+
+  // Initialize cart system
+  initCartDrawer();
+  initCartIcon();
 
   // Initialize hero particle effect
   initHeroParticles();

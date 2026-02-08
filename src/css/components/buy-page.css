@@ -99,7 +99,7 @@
 }
 
 .color-swatch--silver {
-  background: linear-gradient(135deg, #d4d4d4, #a8a8a8);
+  background: #b8b8b8;
 }
 
 .color-swatch--white {
@@ -112,37 +112,16 @@
 }
 
 .color-swatch.active {
-  border-color: #000;
+  box-shadow: 0 0 0 2px #D9E2E7, 0 0 0 3px #000;
 }
 
 .color-swatch--white.active {
-  border-color: #000;
+  border-color: #ddd;
 }
 
-/* Checkmark inside active swatch */
+/* Checkmark hidden — using outline ring instead */
 .color-swatch-check {
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.color-swatch.active .color-swatch-check {
-  opacity: 1;
-}
-
-.color-swatch-check svg {
-  width: 16px;
-  height: 16px;
-}
-
-.color-swatch--silver .color-swatch-check svg {
-  color: #fff;
-}
-
-.color-swatch--white .color-swatch-check svg {
-  color: #000;
+  display: none;
 }
 
 /* ─────────────────────────────────────────

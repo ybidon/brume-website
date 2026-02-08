@@ -6,6 +6,9 @@
 import { initHeader } from './animations/header.js';
 import { initBuyPageSlideshow } from './effects/buySlideshow.js';
 import { initColorSelector } from './effects/colorSelector.js';
+import { addToCart } from './cart.js';
+import { initCartDrawer, openDrawer } from './cartDrawer.js';
+import { initCartIcon } from './cartIcon.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Force header into scrolled state (no hero on this page)
@@ -22,4 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize color selector
   initColorSelector();
+
+  // Initialize cart system
+  initCartDrawer();
+  initCartIcon();
+
+  // Wire up Add to Cart button
+  const addToCartBtn = document.querySelector('.btn-add-cart');
+  if (addToCartBtn) {
+    addToCartBtn.addEventListener('click', () => {
+      // Get currently selected color
+      const activeSwatch = document.querySelector('.color-swatch.active');
+      const colorKey = activeSwatch ? activeSwatch.dataset.color : 'silver';
+
+      // Add to cart and open drawer
+      addToCart(colorKey);
+      openDrawer();
+
+      // Button feedback
+      addToCartBtn.textContent = 'Added!';
+      setTimeout(() => {
+        addToCartBtn.textContent = 'Add to Cart';
+      }, 1500);
+    });
+  }
 });

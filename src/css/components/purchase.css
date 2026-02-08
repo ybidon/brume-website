@@ -205,15 +205,15 @@
 
 .purchase-price {
   font-family: var(--font-body);
-  font-size: var(--text-2xl);
+  font-size: var(--text-lg);
   font-weight: var(--weight-medium);
   color: #000;
   margin-bottom: var(--space-8);
 }
 
 .purchase-currency {
-  font-size: 0.55em;
-  font-weight: var(--weight-regular);
+  font-size: 1em;
+  font-weight: var(--weight-medium);
   vertical-align: baseline;
 }
 
