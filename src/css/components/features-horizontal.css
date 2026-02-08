@@ -159,15 +159,32 @@
   .features-values-list {
     padding: var(--space-8) var(--space-6);
   }
+
+  .features-values-content {
+    min-height: 140px;
+  }
+
+  .features-values-intro {
+    max-width: none;
+  }
 }
 
 @media (max-width: 480px) {
+  .features-values {
+    margin: 0 8px;
+  }
+
   .features-values-image {
     min-height: 320px;
   }
 
   .features-values-list {
     padding: var(--space-6) var(--space-4);
+  }
+
+  .features-values-content {
+    min-height: 120px;
+    margin-bottom: var(--space-8);
   }
 }
 

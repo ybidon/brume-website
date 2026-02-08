@@ -42,7 +42,7 @@
   text-shadow: none;
 }
 
-.header.is-scrolled .nav a {
+.header.is-scrolled .nav-desktop a {
   color: var(--rhode-olive);
   text-shadow: none;
 }
@@ -87,8 +87,8 @@
   opacity: 0.8;
 }
 
-/* Left Navigation */
-.nav {
+/* Left Navigation - Desktop (inside header grid) */
+.nav-desktop {
   grid-column: 1;
   display: flex;
   align-items: center;
@@ -96,7 +96,7 @@
   justify-self: start;
 }
 
-.nav a {
+.nav-desktop a {
   display: inline;
   font-family: var(--font-body);
   font-size: var(--text-xs);
@@ -116,9 +116,19 @@
     color var(--duration-fast) var(--ease-out);
 }
 
-.nav a:hover {
+.nav-desktop a:hover {
   background-size: 100% 1px, 0px 1px;
   background-position: 0 100%, 100% 100%;
+}
+
+/* Mobile Nav Overlay (outside header, hidden on desktop) */
+.nav {
+  display: none;
+}
+
+.nav a {
+  font-family: var(--font-body);
+  color: var(--pearl-white);
 }
 
 /* Right Navigation / CTA */
@@ -185,22 +195,36 @@
     top: 60px;
     padding: var(--space-4) var(--space-4);
     grid-template-columns: 1fr auto 1fr;
+    z-index: calc(var(--z-overlay) + 1);
+  }
+
+  .page-buy .header {
+    top: 16px;
+  }
+
+  /* Hide desktop nav, show mobile overlay nav */
+  .nav-desktop {
+    display: none;
   }
 
   .nav {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: var(--space-8);
     background: var(--ocean-abyss);
     opacity: 0;
     visibility: hidden;
     z-index: var(--z-overlay);
-    transition: all var(--duration-normal) var(--ease-out);
+    transition: opacity var(--duration-normal) var(--ease-out),
+                visibility var(--duration-normal) var(--ease-out);
   }
 
   .nav.is-open {
@@ -220,6 +244,8 @@
 
   .mobile-menu-toggle {
     display: flex;
+    width: 44px;
+    height: 44px;
   }
 
   .header-cta {
@@ -235,6 +261,10 @@
   .header {
     top: 55px;
     padding: var(--space-3) var(--space-3);
+  }
+
+  .page-buy .header {
+    top: 12px;
   }
 }
 

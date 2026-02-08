@@ -292,7 +292,8 @@
 
 @media (max-width: 768px) {
   .purchase {
-    padding: var(--space-6) var(--space-4);
+    margin: var(--space-8) 8px;
+    padding: 0;
   }
 
   .purchase-row {
@@ -352,9 +353,18 @@
   .purchase-buttons {
     align-items: center;
   }
+
+  .btn-add-cart {
+    padding: var(--space-3) var(--space-6);
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 480px) {
+  .purchase {
+    margin: var(--space-6) 8px;
+  }
+
   .purchase-gallery {
     min-height: 320px;
   }
@@ -370,5 +380,4 @@
   .purchase-name {
     font-size: var(--text-xl);
   }
-
 }

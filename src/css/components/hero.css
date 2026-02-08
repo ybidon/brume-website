@@ -500,6 +500,12 @@
     padding-top: calc(var(--space-20) + 60px);
   }
 
+  .hero-content-centered {
+    left: var(--space-4);
+    right: var(--space-4);
+    text-align: center;
+  }
+
   .hero-headline {
     font-size: clamp(2rem, 12vw, 3.5rem);
     white-space: normal;
@@ -528,6 +534,17 @@
 
   .hero-tagline-large {
     font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin: 8px;
+    min-height: calc(100vh - 16px);
+  }
+
+  .hero-fullscreen {
+    min-height: calc(100svh - 16px);
   }
 }
 

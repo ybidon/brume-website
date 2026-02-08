@@ -47,6 +47,17 @@
   }
 }
 
+@media (max-width: 480px) {
+  .announcement-bar {
+    width: calc(100% - 16px);
+    margin: 8px auto 0;
+  }
+
+  .announcement-bar p {
+    font-size: 0.65rem;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .announcement-bar {

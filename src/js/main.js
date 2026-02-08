@@ -81,24 +81,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const featureContents = document.querySelectorAll('.features-val-content');
 
   if (featureItems.length > 0 && featureImages.length > 0) {
+    function activateFeature(item) {
+      const feature = item.dataset.feature;
+
+      // Update active nav item
+      featureItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // Update active image
+      featureImages.forEach(img => img.classList.remove('active'));
+      const targetImg = document.querySelector(`.features-val-img[data-feature="${feature}"]`);
+      if (targetImg) targetImg.classList.add('active');
+
+      // Update active content (heading + description)
+      featureContents.forEach(c => c.classList.remove('active'));
+      const targetContent = document.querySelector(`.features-val-content[data-feature="${feature}"]`);
+      if (targetContent) targetContent.classList.add('active');
+    }
+
     featureItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        const feature = item.dataset.feature;
-
-        // Update active nav item
-        featureItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-
-        // Update active image
-        featureImages.forEach(img => img.classList.remove('active'));
-        const targetImg = document.querySelector(`.features-val-img[data-feature="${feature}"]`);
-        if (targetImg) targetImg.classList.add('active');
-
-        // Update active content (heading + description)
-        featureContents.forEach(c => c.classList.remove('active'));
-        const targetContent = document.querySelector(`.features-val-content[data-feature="${feature}"]`);
-        if (targetContent) targetContent.classList.add('active');
-      });
+      // Desktop: hover
+      item.addEventListener('mouseenter', () => activateFeature(item));
+      // Mobile: tap
+      item.addEventListener('click', () => activateFeature(item));
     });
   }
 

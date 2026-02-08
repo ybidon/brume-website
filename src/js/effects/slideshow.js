@@ -71,4 +71,24 @@ export function initSlideshow() {
       goToSlide(getCurrentIndex() + 1);
     }
   });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slideshow.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  slideshow.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        goToSlide(getCurrentIndex() + 1); // Swipe left → next
+      } else {
+        goToSlide(getCurrentIndex() - 1); // Swipe right → prev
+      }
+    }
+  }, { passive: true });
 }

@@ -169,6 +169,10 @@
     min-height: 450px;
   }
 
+  .buy-page-gallery .slideshow-arrow {
+    opacity: 1;
+  }
+
   .buy-page-content {
     padding: var(--space-8) var(--space-6);
   }
@@ -180,6 +184,11 @@
 
   .color-selector-options {
     justify-content: center;
+  }
+
+  .color-swatch {
+    width: 44px;
+    height: 44px;
   }
 }
 

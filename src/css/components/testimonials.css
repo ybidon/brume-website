@@ -227,6 +227,22 @@
   }
 }
 
+@media (max-width: 480px) {
+  .testimonial-card {
+    width: 260px;
+    padding: var(--space-5);
+  }
+
+  .testimonials-marquee::before,
+  .testimonials-marquee::after {
+    width: 30px;
+  }
+
+  .testimonials-title {
+    font-size: var(--text-2xl);
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
