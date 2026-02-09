@@ -30,8 +30,22 @@ export function initHeader() {
     heroBottom = getHeroBottom();
   });
 
+  const isMobile = () => window.innerWidth <= 768;
+
   function handleScroll() {
     const currentScroll = window.scrollY;
+
+    // On mobile, header is always fixed and visible — never hide
+    if (isMobile()) {
+      header.classList.remove('is-hidden');
+      if (currentScroll > 50) {
+        header.classList.add('is-scrolled');
+      } else if (hero) {
+        header.classList.remove('is-scrolled');
+      }
+      lastScroll = currentScroll;
+      return;
+    }
 
     // If no hero exists, always stay in scrolled state
     if (!hero) {

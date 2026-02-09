@@ -149,7 +149,7 @@
   }
 
   .buy-page-gallery .slideshow-arrow {
-    opacity: 1;
+    opacity: 0.7;
   }
 
   .buy-page-content {
@@ -157,12 +157,17 @@
   }
 
   .buy-page-info {
-    text-align: center;
+    text-align: left;
     max-width: none;
   }
 
+  .buy-page-info .purchase-desc {
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+
   .color-selector-options {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .color-swatch {

@@ -415,6 +415,12 @@
   .header-cart {
     width: 44px;
     height: 44px;
+    color: var(--rhode-olive);
+  }
+
+  .header-cart svg {
+    width: 28px;
+    height: 28px;
   }
 
   .cart-qty-btn {

@@ -1,6 +1,6 @@
 /**
  * Product Slideshow
- * Arrow and thumbnail navigation for purchase section
+ * Arrow, thumbnail, and dot navigation for purchase section
  */
 
 export function initSlideshow() {
@@ -13,6 +13,37 @@ export function initSlideshow() {
   const nextBtn = slideshow.querySelector('.slideshow-next');
 
   if (images.length === 0) return;
+
+  // Create dot indicators
+  let dotsContainer = null;
+
+  function createDots() {
+    if (images.length <= 1) return;
+
+    dotsContainer = document.createElement('div');
+    dotsContainer.className = 'slideshow-dots';
+
+    images.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(i);
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    slideshow.appendChild(dotsContainer);
+  }
+
+  function updateDots(index) {
+    if (!dotsContainer) return;
+    const dots = dotsContainer.querySelectorAll('.slideshow-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
 
   // Helper function to go to a specific slide
   function goToSlide(index) {
@@ -27,12 +58,18 @@ export function initSlideshow() {
     // Update thumbnails
     thumbnails.forEach((thumb) => thumb.classList.remove('active'));
     if (thumbnails[index]) thumbnails[index].classList.add('active');
+
+    // Update dots
+    updateDots(index);
   }
 
   // Get current slide index
   function getCurrentIndex() {
     return Array.from(images).findIndex(img => img.classList.contains('active'));
   }
+
+  // Initialize dots
+  createDots();
 
   // Handle thumbnail click
   thumbnails.forEach((thumb) => {
@@ -85,9 +122,9 @@ export function initSlideshow() {
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 50) {
       if (diff > 0) {
-        goToSlide(getCurrentIndex() + 1); // Swipe left → next
+        goToSlide(getCurrentIndex() + 1); // Swipe left -> next
       } else {
-        goToSlide(getCurrentIndex() - 1); // Swipe right → prev
+        goToSlide(getCurrentIndex() - 1); // Swipe right -> prev
       }
     }
   }, { passive: true });

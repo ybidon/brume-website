@@ -537,14 +537,32 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .hero {
-    margin: 8px;
-    min-height: calc(100vh - 16px);
+    margin: 0 6px 6px;
+    min-height: auto;
+    height: calc(100vh - 60px);
+    border-radius: 6px;
   }
 
   .hero-fullscreen {
-    min-height: calc(100svh - 16px);
+    height: calc(100svh - 60px);
+    min-height: auto;
+  }
+
+  .hero-headline-large {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin: 0 6px 6px;
+    height: calc(100vh - 52px);
+  }
+
+  .hero-fullscreen {
+    height: calc(100svh - 52px);
   }
 }
 

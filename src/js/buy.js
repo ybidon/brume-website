@@ -9,6 +9,7 @@ import { initColorSelector } from './effects/colorSelector.js';
 import { addToCart } from './cart.js';
 import { initCartDrawer, openDrawer } from './cartDrawer.js';
 import { initCartIcon } from './cartIcon.js';
+import { initFaq } from './effects/faq.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Force header into scrolled state (no hero on this page)
@@ -29,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize cart system
   initCartDrawer();
   initCartIcon();
+
+  // Initialize FAQ accordion
+  initFaq();
 
   // Wire up Add to Cart button
   const addToCartBtn = document.querySelector('.btn-add-cart');

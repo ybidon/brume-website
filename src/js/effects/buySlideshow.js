@@ -1,10 +1,10 @@
 /**
  * Buy Page Slideshow
- * Extended slideshow with color variant filtering
+ * Extended slideshow with color variant filtering + dot indicators
  */
 
 let currentColor = 'silver';
-let slideshow, prevBtn, nextBtn;
+let slideshow, prevBtn, nextBtn, dotsContainer;
 
 function getVisibleImages() {
   if (!slideshow) return [];
@@ -16,6 +16,37 @@ function getVisibleImages() {
 function getCurrentIndex() {
   const images = getVisibleImages();
   return images.findIndex(img => img.classList.contains('active'));
+}
+
+function createDots() {
+  if (dotsContainer) dotsContainer.remove();
+
+  const images = getVisibleImages();
+  if (images.length <= 1) return;
+
+  dotsContainer = document.createElement('div');
+  dotsContainer.className = 'slideshow-dots';
+
+  images.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToSlide(i);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  slideshow.appendChild(dotsContainer);
+}
+
+function updateDots(index) {
+  if (!dotsContainer) return;
+  const dots = dotsContainer.querySelectorAll('.slideshow-dot');
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
 }
 
 function goToSlide(index) {
@@ -32,11 +63,15 @@ function goToSlide(index) {
 
   // Show the target image
   images[index].classList.add('active');
+
+  // Sync dots
+  updateDots(index);
 }
 
 export function switchColor(color) {
   currentColor = color;
   goToSlide(0);
+  createDots();
 }
 
 export function initBuyPageSlideshow() {
@@ -45,6 +80,9 @@ export function initBuyPageSlideshow() {
 
   prevBtn = slideshow.querySelector('.slideshow-prev');
   nextBtn = slideshow.querySelector('.slideshow-next');
+
+  // Create dot indicators
+  createDots();
 
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
@@ -84,9 +122,9 @@ export function initBuyPageSlideshow() {
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 50) {
       if (diff > 0) {
-        goToSlide(getCurrentIndex() + 1); // Swipe left → next
+        goToSlide(getCurrentIndex() + 1); // Swipe left -> next
       } else {
-        goToSlide(getCurrentIndex() - 1); // Swipe right → prev
+        goToSlide(getCurrentIndex() - 1); // Swipe right -> prev
       }
     }
   }, { passive: true });

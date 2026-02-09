@@ -72,43 +72,63 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.35);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   z-index: 2;
-  opacity: 0;
-}
-
-.product-slideshow:hover .slideshow-arrow {
-  opacity: 1;
+  opacity: 0.7;
 }
 
 .slideshow-arrow:hover {
-  background: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.55);
   transform: translateY(-50%) scale(1.05);
 }
 
 .slideshow-arrow svg {
-  width: 24px;
-  height: 24px;
-  color: #000;
+  width: 20px;
+  height: 20px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .slideshow-prev {
-  left: var(--space-6);
+  left: var(--space-4);
 }
 
 .slideshow-next {
-  right: var(--space-6);
+  right: var(--space-4);
+}
+
+/* Dot Indicators */
+.slideshow-dots {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.slideshow-dot.active {
+  background: rgba(0, 0, 0, 0.65);
 }
 
 /* Thumbnail Navigation */
@@ -310,14 +330,14 @@
   }
 
   .slideshow-arrow {
-    width: 40px;
-    height: 40px;
-    opacity: 1;
+    width: 36px;
+    height: 36px;
+    opacity: 0.7;
   }
 
   .slideshow-arrow svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .slideshow-prev {
@@ -326,6 +346,15 @@
 
   .slideshow-next {
     right: var(--space-3);
+  }
+
+  .slideshow-dots {
+    gap: 6px;
+  }
+
+  .slideshow-dot {
+    width: 7px;
+    height: 7px;
   }
 
   .slideshow-thumbnails {
@@ -342,16 +371,25 @@
   }
 
   .purchase-info {
-    text-align: center;
+    text-align: left;
     max-width: none;
   }
 
+  .purchase-desc {
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+
   .purchase-rating {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .purchase-buttons {
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  .btn-view-more {
+    margin-left: var(--space-4);
   }
 
   .btn-add-cart {
@@ -376,6 +414,7 @@
   .purchase-content {
     padding: var(--space-6) var(--space-4);
   }
+
 
   .purchase-name {
     font-size: var(--text-xl);
